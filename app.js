@@ -127,6 +127,7 @@ async function showSection(name) {
 
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('open');
 }
 
 // ======================== THEME ========================

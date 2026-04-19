@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMPUTEC — Escuela Superior Vocacional Pablo Colón Berdecia</title>
+<link rel="icon" type="image/png" href="galeria/logoComputec-oficial.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="login-screen">
+  <div class="login-bg">
+    <div class="login-grid"></div>
+    <div class="login-orb orb1"></div>
+    <div class="login-orb orb2"></div>
+    <div class="login-orb orb3"></div>
+  </div>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-icon">
+<img src="galeria/logoComputec-oficial.png" alt="COMPUTEC Logo" class="login-logo-img">
+      </div>
+      <div>
+        <div class="login-school">Escuela Superior Vocacional</div>
+        <div class="login-school-name">Pablo Colón Berdecia</div>
+        <div class="login-dept">Departamento de Tecnología · COMPUTEC</div>
+      </div>
+    </div>
+    <h2 class="login-title">Portal Técnico</h2>
+    <p class="login-sub">Sistema de Gestión de Soluciones Técnicas</p>
+    <div class="form-group">
+      <label>Usuario</label>
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 1114 0H3z"/></svg>
+<input type="text" id="login-user" placeholder="Ingrese su usuario" autocomplete="username">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+<input type="password" id="login-pass" placeholder="Ingrese su contraseña" autocomplete="current-password">
+        <button class="toggle-pass" onclick="togglePass()" type="button">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="login-error" class="login-error"></div>
+    <button class="btn-login" onclick="doLogin()">
+      <span>Iniciar Sesión</span>
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg>
+    </button>
+    <div class="login-footer">Sistema interno · Solo personal autorizado</div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="app hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+<img src="galeria/logoComputec-oficial.png" alt="logoComputec-oficial" class="logo-img">
+        <div>
+          <div class="sidebar-title">COMPUTEC</div>
+          <div class="sidebar-sub">Sistema Técnico</div>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="nav-item active" onclick="showSection('dashboard')" data-section="dashboard">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="nav-item" onclick="showSection('records')" data-section="records">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"/></svg>
+        <span>Problemas y Soluciones</span>
+      </button>
+      <button class="nav-item" onclick="showSection('register')" data-section="register">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/></svg>
+        <span>Registrar Solución</span>
+      </button>
+      <button class="nav-item" onclick="showSection('stats')" data-section="stats">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+        <span>Estadísticas</span>
+      </button>
+      <button class="nav-item" onclick="showSection('ai')" data-section="ai">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+        <span>Inteligencia Artificial</span>
+        <span class="nav-badge">IA</span>
+      </button>
+      <div class="nav-divider"></div>
+      <button class="nav-item nav-logout" onclick="doLogout()">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"/></svg>
+        <span>Cerrar Sesión</span>
+      </button>
+    </nav>
+    <div class="sidebar-user">
+      <div class="user-avatar">T</div>
+      <div>
+        <div class="user-name">Técnico</div>
+        <div class="user-role">Administrador del Sistema</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <button class="menu-toggle" onclick="toggleSidebar()">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>
+      </button>
+      <div class="topbar-title">
+        <div class="topbar-school">Escuela Superior Vocacional Pablo Colón Berdecia</div>
+        <div class="topbar-dept">Departamento de Tecnología · COMPUTEC</div>
+      </div>
+      <div class="topbar-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Modo oscuro">
+          <svg id="theme-icon-sun" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+        </button>
+        <div class="topbar-date" id="topbar-date"></div>
+      </div>
+    </header>
+
+    <!-- SECTIONS -->
+    <div class="content-area">
+
+      <!-- DASHBOARD -->
+      <section id="section-dashboard" class="section active">
+        <div class="section-header">
+          <h1>Dashboard</h1>
+          <p>Resumen general del sistema de soluciones técnicas</p>
+        </div>
+        <div class="stats-grid" id="dash-stats"></div>
+        <div class="dash-bottom">
+          <div class="recent-card">
+            <h3>Registros Recientes</h3>
+            <div id="recent-list"></div>
+          </div>
+          <div class="activity-card">
+            <h3>Técnicos Activos</h3>
+            <div id="tech-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECORDS -->
+      <section id="section-records" class="section">
+        <div class="section-header">
+          <h1>Problemas y Soluciones</h1>
+          <p>Repositorio completo de casos técnicos registrados</p>
+        </div>
+        <div class="filters-bar">
+          <div class="search-wrap">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"/></svg>
+            <input type="text" id="search-input" placeholder="Buscar problema o solución..." oninput="filterRecords()">
+          </div>
+          <select id="filter-grade" onchange="filterRecords()">
+            <option value="">Todos los grados</option>
+            <option>10mo</option><option>11mo</option><option>12mo</option>
+          </select>
+          <select id="filter-group" onchange="filterRecords()">
+            <option value="">Todos los grupos</option>
+            <option>A</option><option>B</option><option>C</option><option>D</option>
+          </select>
+          <select id="filter-status" onchange="filterRecords()">
+            <option value="">Todos los estados</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en_proceso">En Proceso</option>
+            <option value="resuelto">Resuelto</option>
+          </select>
+          <input type="date" id="filter-date" onchange="filterRecords()">
+          <button class="btn-export" onclick="exportToCSV()">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>
+            Exportar
+          </button>
+        </div>
+        <div id="records-count" class="records-count"></div>
+        <div id="records-grid" class="records-grid"></div>
+      </section>
+
+      <!-- REGISTER -->
+      <section id="section-register" class="section">
+        <div class="section-header">
+          <h1>Registrar Nueva Solución</h1>
+          <p>Documenta un problema técnico y su solución</p>
+        </div>
+        <div class="form-container">
+          <form id="main-form" onsubmit="saveRecord(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nombre Completo del Técnico *</label>
+                <input type="text" id="f-name" placeholder="Ej: Juan García López" required>
+              </div>
+              <div class="form-group">
+                <label>Grado *</label>
+                <select id="f-grade" required>
+                  <option value="">Seleccionar grado</option>
+                  <option>10mo</option><option>11mo</option><option>12mo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Grupo *</label>
+                <select id="f-group" required>
+                  <option value="">Seleccionar grupo</option>
+                  <option>A</option><option>B</option><option>C</option><option>D</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Categoría *</label>
+                <select id="f-category" required>
+                  <option value="">Seleccionar categoría</option>
+                  <option>Hardware</option><option>Software</option><option>Red / Conectividad</option>
+                  <option>Sistema Operativo</option><option>Impresoras</option><option>Periféricos</option>
+                  <option>Seguridad</option><option>Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Prioridad</label>
+                <select id="f-priority">
+                  <option value="normal">Normal</option>
+                  <option value="alta">Alta</option>
+                  <option value="urgente">Urgente</option>
+                  <option value="baja">Baja</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Estado</label>
+                <select id="f-status">
+                  <option value="resuelto">Resuelto</option>
+                  <option value="en_proceso">En Proceso</option>
+                  <option value="pendiente">Pendiente</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label>Problema Presentado *</label>
+                <textarea id="f-problem" rows="4" placeholder="Describe el problema técnico de manera detallada..." required></textarea>
+              </div>
+              <div class="form-group full-width">
+                <label>Solución Aplicada *</label>
+                <textarea id="f-solution" rows="4" placeholder="Describe paso a paso la solución aplicada..." required></textarea>
+              </div>
+              <div class="form-group full-width">
+                <label>Observaciones Adicionales</label>
+                <textarea id="f-notes" rows="2" placeholder="Notas adicionales, advertencias, recomendaciones..."></textarea>
+              </div>
+              <div class="form-group full-width">
+                <label>Imágenes (opcional)</label>
+                <div class="upload-area" id="upload-area" onclick="document.getElementById('f-images').click()">
+                  <svg viewBox="0 0 48 48" fill="none"><path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <p>Haz clic para subir imágenes</p>
+                  <span>PNG, JPG hasta 5MB cada una</span>
+                </div>
+                <input type="file" id="f-images" accept="image/*" multiple style="display:none" onchange="previewImages(event)">
+                <div id="image-preview" class="image-preview-grid"></div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="clearForm()">Limpiar Formulario</button>
+              <button type="submit" class="btn-primary">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293z"/></svg>
+                Guardar Registro
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section id="section-stats" class="section">
+        <div class="section-header">
+          <h1>Estadísticas</h1>
+          <p>Análisis visual del sistema de soluciones técnicas</p>
+        </div>
+        <div id="stats-content"></div>
+      </section>
+
+      <!-- AI -->
+      <section id="section-ai" class="section">
+        <div class="section-header">
+          <h1>Asistente de Inteligencia Artificial</h1>
+          <p>Obtén ayuda técnica inteligente para diagnosticar y resolver problemas</p>
+        </div>
+        <div class="ai-container">
+          <div class="ai-chat-area" id="ai-chat">
+            <div class="ai-welcome">
+              <div class="ai-avatar-big">
+                <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="20" fill="#3B82F6" fill-opacity="0.15"/><path d="M13 20a7 7 0 1014 0 7 7 0 00-14 0z" stroke="#3B82F6" stroke-width="1.5"/><circle cx="20" cy="20" r="2.5" fill="#3B82F6"/><path d="M20 13v2M20 25v2M13 20h2M25 20h2" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Computec AI</h3>
+              <p>Describe tu problema técnico y te ayudaré a diagnosticarlo, sugerir soluciones y redactar el reporte.</p>
+              <div class="ai-suggestions">
+                <button onclick="setAIPrompt('Mi computadora no enciende y hace un pitido al intentar arrancar')">💻 PC no enciende</button>
+                <button onclick="setAIPrompt('La red WiFi se conecta pero no hay acceso a internet')">📡 Sin internet</button>
+                <button onclick="setAIPrompt('La pantalla muestra líneas horizontales y distorsión de imagen')">🖥️ Falla de pantalla</button>
+                <button onclick="setAIPrompt('La impresora no imprime y muestra error en la cola')">🖨️ Error impresora</button>
+              </div>
+            </div>
+          </div>
+          <div class="ai-input-area">
+            <textarea id="ai-input" placeholder="Describe el problema técnico aquí..." rows="3"></textarea>
+            <div class="ai-input-actions">
+              <button class="btn-use-in-form" onclick="useAIInForm()">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/></svg>
+                Usar en formulario
+              </button>
+              <button class="btn-ai-send" onclick="sendToAI()" id="ai-send-btn">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/></svg>
+                Consultar IA
+              </button>
+            </div>
+            <p class="ai-disclaimer">Computec AI puede cometer errores. Verifica información crítica como voltajes o comandos de sistema.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETAIL -->
+<div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+  <div class="modal-card" id="modal-content"></div>
+</div>
+
+<!-- TOAST -->
+<div id="toast-container" class="toast-container"></div>
+
+<!-- CONFIRM DIALOG -->
+<div id="confirm-overlay" class="modal-overlay hidden">
+  <div class="confirm-card">
+    <div class="confirm-icon">⚠️</div>
+    <h3 id="confirm-title">¿Eliminar registro?</h3>
+    <p id="confirm-msg">Esta acción no se puede deshacer.</p>
+    <div class="confirm-actions">
+      <button class="btn-secondary" onclick="closeConfirm()">Cancelar</button>
+      <button class="btn-danger" id="confirm-btn">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body>
+</html>
